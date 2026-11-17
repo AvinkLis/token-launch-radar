@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar: pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark" aria-hidden="true"><span></span></div>
+    <div>
+      <h1>Token Launch Radar</h1>
+      <p class="sub" id="subline">Pre-token protocols, ranked by what their token would be worth.</p>
+    </div>
+  </div>
+  <div class="modelchip" id="modelchip">model &mdash;</div>
+</header>
+
+<section class="stats" id="stats" aria-label="Snapshot summary"></section>
+
+<nav class="tabs" aria-label="Views">
+  <button type="button" data-view="board" class="tab on">The board</button>
+  <button type="button" data-view="model" class="tab">How the pricing works</button>
+  <button type="button" data-view="live" class="tab">Already trading</button>
+</nav>
+
+<main>
+  <section id="view-board">
+    <div class="controls">
+      <label class="ctl grow">Search
+        <input type="search" id="q" placeholder="Protocol name or category">
+      </label>
+      <label class="ctl">Category
+        <select id="f-category"></select>
+      </label>
+      <label class="ctl">Chain
+        <select id="f-chain"></select>
+      </label>
+      <label class="ctl">Screen
+        <select id="f-screen">
+          <option value="all">Whole board</option>
+          <option value="watchlist">House watchlist only</option>
+          <option value="extended">Extended finds only</option>
+        </select>
+      </label>
+      <p class="count" id="count"></p>
+    </div>
+    <div class="tablewrap">
+      <table id="board-table">
+        <thead>
+          <tr>
+            <th data-sort="rank" class="num sortable">#</th>
+            <th data-sort="name" class="sortable">Protocol</th>
+            <th>Category</th>
+            <th>Chains</th>
+            <th data-sort="tvl" class="num sortable">TVL</th>
+            <th data-sort="change" class="num sortable">7d</th>
+            <th data-sort="age" class="num sortable">Age</th>
+            <th data-sort="multiple" class="num sortable">Multiple</th>
+            <th data-sort="implied" class="num sortable">Implied value</th>
+            <th data-sort="ratio" class="num sortable">Implied / TVL</th>
+          </tr>
+        </thead>
+        <tbody id="board-body"></tbody>
+      </table>
+    </div>
+    <p class="hint">Select any row for the protocol's price breakdown and its farm plan. <span class="wdot"></span> marks the house watchlist: the 40 protocols every board must carry. The other rows are the same screen run below the house's $50M floor.</p>
+  </section>
+
+  <section id="view-detail" hidden></section>
+  <section id="view-model" hidden></section>
+  <section id="view-live" hidden></section>
+</main>
+
+<footer>
+  <p>An implied value prices the record, not a promise: a protocol that records no token may never issue one, and DefiLlama's record is a record, not proof. Every figure on this page is computed from the sealed snapshot alone. Built for the make.fun token launch radar bounty.</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
